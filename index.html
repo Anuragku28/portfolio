@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anurag Kumar — B2B Growth Marketer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #ffffff;
+      --bg2:     #f0f7ff;
+      --bg3:     #e8f2ff;
+      --accent:  #2563eb;
+      --accent2: #7c3aed;
+      --accent3: #059669;
+      --text:    #0f172a;
+      --text2:   #1e293b;
+      --muted:   #64748b;
+      --border:  #e2e8f0;
+      --card:    #ffffff;
+      --shadow:  0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.06);
+      --shadow2: 0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(37,99,235,0.10);
+      --grad:    linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      --grad-lt: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+    }
+    .nav-logo { font-weight: 900; font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--grad); color: #fff; border: none; border-radius: 8px;
+      padding: 10px 22px; font-size: 14px; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s; display: inline-block;
+      box-shadow: 0 2px 12px rgba(37,99,235,0.30);
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── WRAPPER ── */
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 56px; }
+
+    /* ── SECTION COMMONS ── */
+    .section-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 14px; display: block;
+    }
+    h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 900; letter-spacing: -1px; color: var(--text); margin-bottom: 14px; }
+    .section-sub { color: var(--muted); font-size: 16px; max-width: 560px; line-height: 1.75; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 80px; background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: ''; position: absolute; bottom: -150px; left: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 72px;
+      max-width: 1160px; margin: 0 auto; padding: 0 56px;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #eff6ff; border: 1px solid #bfdbfe;
+      border-radius: 100px; padding: 7px 18px;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+      margin-bottom: 28px; width: fit-content;
+    }
+    .hero-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent3); animation: pulse 2s infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    h1 {
+      font-size: clamp(34px, 5vw, 62px); font-weight: 900; letter-spacing: -2px;
+      line-height: 1.06; color: var(--text); margin-bottom: 22px;
+    }
+    h1 .grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: 18px; color: var(--muted); max-width: 540px; line-height: 1.7; margin-bottom: 40px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+    .btn-primary {
+      background: var(--grad); color: #fff; border-radius: 10px;
+      padding: 14px 28px; font-size: 15px; font-weight: 700;
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.30);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.40); }
+    .btn-secondary {
+      background: #fff; color: var(--text); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 14px 28px; font-size: 15px; font-weight: 600;
+      text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(37,99,235,0.12); }
+    .hero-stats {
+      display: flex; gap: 40px; flex-wrap: wrap;
+      padding-top: 40px; border-top: 1px solid var(--border);
+    }
+    .hero-stat-num { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--accent); }
+    .hero-stat-label { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 500; }
+
+    /* Profile Photo */
+    .hero-photo { position: relative; flex-shrink: 0; padding-bottom: 24px; }
+    .hero-photo-wrap {
+      width: 300px; height: 360px; border-radius: 28px; overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(37,99,235,0.15), 0 2px 8px rgba(0,0,0,0.08);
+      border: 4px solid #fff;
+    }
+    .hero-photo-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+    }
+    .hero-photo-fallback {
+      width: 100%; height: 100%;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px; font-weight: 900; color: rgba(255,255,255,0.9);
+      letter-spacing: -2px;
+    }
+    .hero-photo-badge {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      background: #fff; border: 1.5px solid var(--border); border-radius: 50px;
+      padding: 10px 20px; display: flex; align-items: center; gap: 10px;
+      box-shadow: var(--shadow2); white-space: nowrap;
+    }
+    .hero-photo-badge-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent3); animation: pulse 2s infinite; flex-shrink: 0; }
+    .hero-photo-badge span { font-size: 13px; font-weight: 700; color: var(--text); }
+    .hero-photo-deco {
+      position: absolute; top: -24px; right: -24px;
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, #bfdbfe, #ddd6fe); opacity: 0.55;
+      z-index: -1;
+    }
+    .hero-photo-deco2 {
+      position: absolute; bottom: 40px; left: -28px;
+      width: 68px; height: 68px; border-radius: 50%;
+      background: linear-gradient(135deg, #a5f3fc, #93c5fd); opacity: 0.50;
+      z-index: -1;
+    }
+
+    /* ── ABOUT ── */
+    #about { padding: 100px 0; background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 40px; }
+    .about-text p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+    .about-text p strong { color: var(--text); font-weight: 700; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .tag {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--muted);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .about-visual { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: var(--shadow); }
+    .av-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+    .av-item:last-child { margin-bottom: 0; }
+    .av-icon {
+      width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .av-icon.blue   { background: #eff6ff; }
+    .av-icon.purple { background: #f5f3ff; }
+    .av-icon.green  { background: #ecfdf5; }
+    .av-icon.orange { background: #fffbeb; }
+    .av-title { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 3px; }
+    .av-desc  { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+    /* ── EXPERTISE ── */
+    #expertise { padding: 100px 0; background: var(--bg); }
+    .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+    .expertise-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; box-shadow: var(--shadow);
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    }
+    .expertise-card:hover { box-shadow: var(--shadow2); transform: translateY(-4px); border-color: #bfdbfe; }
+    .exp-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .exp-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .exp-desc { color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .exp-tag { background: #eff6ff; color: var(--accent); border-radius: 6px; padding: 3px 10px; font-size: 11px; font-weight: 700; }
+
+    /* ── TIMELINE ── */
+    #timeline { padding: 100px 0; background: var(--bg2); }
+    .timeline { position: relative; margin-top: 48px; padding-left: 36px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px;
+      background: linear-gradient(180deg, #2563eb 0%, #7c3aed 100%); border-radius: 2px;
+    }
+    .tl-item { position: relative; margin-bottom: 52px; display: flex; gap: 24px; align-items: flex-start; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -44px; top: 16px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--grad); border: 3px solid #fff;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.20);
+    }
+    .tl-logo {
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+      overflow: hidden; border: 1.5px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: center; background: #fff;
+    }
+    .tl-logo svg { width: 100%; height: 100%; display: block; }
+    .tl-body { flex: 1; }
+    .tl-period { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .tl-company { font-size: 19px; font-weight: 900; color: var(--text); margin-bottom: 3px; }
+    .tl-role { font-size: 13px; color: var(--accent2); font-weight: 700; margin-bottom: 8px; }
+    .tl-desc { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 580px; }
+
+    /* ── DIFFERENTIATOR ── */
+    #differentiator { padding: 100px 0; background: var(--bg); }
+    .diff-intro { color: var(--muted); font-size: 16px; max-width: 680px; line-height: 1.75; margin-bottom: 48px; }
+    .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .diff-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; position: relative; overflow: hidden; box-shadow: var(--shadow);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .diff-card:hover { box-shadow: var(--shadow2); transform: translateY(-3px); }
+    .diff-num { position: absolute; top: 16px; right: 20px; font-size: 44px; font-weight: 900; opacity: 0.05; color: var(--text); line-height: 1; }
+    .diff-market { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+    .diff-market.m1 { color: #d97706; }
+    .diff-market.m2 { color: var(--accent); }
+    .diff-market.m3 { color: #db2777; }
+    .diff-market.m4 { color: var(--accent3); }
+    .diff-company { font-size: 17px; font-weight: 900; color: var(--text); margin-bottom: 8px; }
+    .diff-detail { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 16px; }
+    .diff-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .diff-pill { border-radius: 6px; padding: 3px 10px; font-size: 11px; font-weight: 600; background: #f1f5f9; color: var(--muted); }
+    .diff-quote {
+      margin-top: 40px; padding: 24px 28px;
+      background: var(--grad-lt); border: 1px solid #dbeafe; border-left: 4px solid var(--accent);
+      border-radius: 12px; max-width: 700px;
+    }
+    .diff-quote p { color: var(--text2); font-size: 15px; font-weight: 600; line-height: 1.7; font-style: italic; }
+
+    /* ── CASE STUDIES ── */
+    #projects { padding: 100px 0; background: var(--bg2); }
+    .project-theme { margin-bottom: 64px; }
+    .theme-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+    .theme-badge { padding: 6px 16px; border-radius: 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    .theme-badge.paid  { background: #eff6ff; color: var(--accent); }
+    .theme-badge.zero  { background: #ecfdf5; color: var(--accent3); }
+    .theme-badge.abm   { background: #f5f3ff; color: var(--accent2); }
+    .theme-title { font-size: 18px; font-weight: 700; color: var(--text2); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .project-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; display: flex; flex-direction: column; box-shadow: var(--shadow);
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    }
+    .project-card:hover { box-shadow: var(--shadow2); transform: translateY(-3px); border-color: #bfdbfe; }
+    .project-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+    .project-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 18px; line-height: 1.4; }
+    .case-section { margin-bottom: 12px; }
+    .case-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+    .case-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .project-result { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
+    .result-num { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .result-label { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+    /* ── NUMBERS ── */
+    #numbers { padding: 100px 0; background: var(--bg); }
+    .numbers-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      margin-top: 48px; border: 1px solid var(--border); border-radius: 20px;
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .number-cell {
+      background: #fff; padding: 40px 24px; text-align: center;
+      border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      transition: background 0.25s;
+    }
+    .number-cell:hover { background: #f0f7ff; }
+    .num-big {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 900; letter-spacing: -2px;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;
+    }
+    .num-label { font-size: 12px; color: var(--muted); margin-top: 10px; font-weight: 500; line-height: 1.5; max-width: 140px; margin-left: auto; margin-right: auto; }
+
+    /* ── CONTACT ── */
+    #contact { padding: 100px 0; background: var(--bg2); text-align: center; }
+    .contact-box {
+      background: #fff; border: 1px solid var(--border); border-radius: 24px;
+      padding: 64px 48px; max-width: 600px; margin: 48px auto 0; box-shadow: var(--shadow2);
+    }
+    .contact-box h3 { font-size: 22px; font-weight: 900; color: var(--text); margin-bottom: 10px; }
+    .contact-box p { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      background: #f8fafc; border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 14px 24px; width: 100%; max-width: 380px;
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 14px;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); background: #eff6ff; box-shadow: 0 2px 12px rgba(37,99,235,0.12); }
+    .contact-link .cl-icon { font-size: 20px; width: 28px; text-align: center; }
+
+    /* ── FOOTER ── */
+    footer { text-align: center; padding: 28px 56px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; background: var(--bg); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; text-align: center; }
+      .hero-badge { margin: 0 auto 28px; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-ctas { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-photo { display: flex; flex-direction: column; align-items: center; order: -1; }
+      .hero-photo-wrap { width: 220px; height: 260px; }
+      .wrap { padding: 0 24px; }
+      #about, #expertise, #timeline, #differentiator, #projects, #numbers, #contact { padding: 72px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .hero-stats { gap: 24px; }
+      footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="#hero" class="nav-logo">AK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#timeline">Journey</a></li>
+    <li><a href="#differentiator">Edge</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#numbers">Impact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <!-- LEFT: Text -->
+    <div>
+      <div class="hero-badge">8+ Years · B2B Growth Marketing</div>
+      <h1>Turning <span class="grad">Spend<br>into Pipeline.</span></h1>
+      <p class="hero-sub">I build demand engines — across paid media, SEO, and ABM — for companies ranging from Indian D2C to US Enterprise. Every market, every stage, from scratch to scale.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">See My Work</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">$2.5M</div>
+          <div class="hero-stat-label">Revenue Influenced</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">$500K</div>
+          <div class="hero-stat-label">Pipeline (10x ROAS)</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">8K+</div>
+          <div class="hero-stat-label">Organic Visitors Built</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">Markets Mastered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Profile Photo -->
+    <div class="hero-photo">
+      <div class="hero-photo-deco"></div>
+      <div class="hero-photo-deco2"></div>
+      <div class="hero-photo-wrap">
+        <!--
+          To add your photo: save it as assets/profile.jpg in the same folder as this file.
+          The photo will display automatically. Until then a gradient placeholder shows.
+        -->
+        <img src="./assets/profile.jpg" alt="Anurag Kumar"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="hero-photo-fallback" style="display:none;">AK</div>
+      </div>
+      <div class="hero-photo-badge">
+        <div class="hero-photo-badge-dot"></div>
+        <span>Open to Opportunities</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="wrap fade-in">
+    <span class="section-label">About Me</span>
+    <h2>Marketer by craft.<br>Growth strategist by nature.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I started my career at a performance-first agency, <strong>Social Frontier</strong>, where I learned to manage budgets, read audiences, and drive measurable results across both B2B and B2C clients.</p>
+        <p>From there, I moved into the SaaS world at <strong>Clearout.io</strong> as an early core team member — building paid, SEO, and content from zero. Then expanded my scope at <strong>Monkspaces.ai</strong> and <strong>Prezent.ai</strong>, going upstream to Enterprise and cross-border markets.</p>
+        <p>What sets me apart: I've built and owned the full funnel — not just campaigns, but strategy, content, landing pages, automation, and reporting. I operate like a <strong>one-person growth team</strong> that also knows how to lead one.</p>
+        <div class="about-tags">
+          <span class="tag">Google Ads</span><span class="tag">Meta Ads</span>
+          <span class="tag">LinkedIn Ads</span><span class="tag">Capterra</span>
+          <span class="tag">SEO</span><span class="tag">Content Strategy</span>
+          <span class="tag">ABM</span><span class="tag">PLG</span>
+          <span class="tag">Email Marketing</span><span class="tag">Marketing Automation</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="av-item">
+          <div class="av-icon blue">📈</div>
+          <div><div class="av-title">Performance Marketing</div><div class="av-desc">Scaled campaigns from scratch to ROAS-positive across Google, Meta, LinkedIn &amp; Capterra.</div></div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon green">🌱</div>
+          <div><div class="av-title">Organic Growth</div><div class="av-desc">Built content engines that drove 8K+ monthly visitors with zero SEO budget in 11 months.</div></div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon purple">🎯</div>
+          <div><div class="av-title">ABM &amp; Demand Gen</div><div class="av-desc">Built LinkedIn ABM automation engines generating $100K pipeline in 2 months.</div></div>
+        </div>
+        <div class="av-item">
+          <div class="av-icon orange">🌍</div>
+          <div><div class="av-title">Multi-Market Execution</div><div class="av-desc">Operated across Indian, GCC, EU &amp; US Enterprise markets with distinct strategies.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERTISE ═══ -->
+<section id="expertise">
+  <div class="wrap">
+    <span class="section-label">What I Do</span>
+    <h2>Full-funnel. Every channel.<br>One goal: pipeline.</h2>
+    <div class="expertise-grid fade-in">
+      <div class="expertise-card">
+        <span class="exp-icon">💰</span>
+        <div class="exp-title">Paid Performance Marketing</div>
+        <div class="exp-desc">End-to-end ownership of paid campaigns — from strategy and ad copy to landing pages, bidding, and ROAS optimisation. Managed spends from ₹1Cr/quarter to $2.5M across platforms.</div>
+        <div class="exp-tags"><span class="exp-tag">Google Ads</span><span class="exp-tag">Meta</span><span class="exp-tag">LinkedIn</span><span class="exp-tag">Capterra</span></div>
+      </div>
+      <div class="expertise-card">
+        <span class="exp-icon">🔍</span>
+        <div class="exp-title">SEO &amp; Content Strategy</div>
+        <div class="exp-desc">Built content strategies that drive compounding organic traffic — pillar pages, backlink partnerships, topical authority. Scaled traffic from zero to 8K+ without paid SEO tools.</div>
+        <div class="exp-tags"><span class="exp-tag">Technical SEO</span><span class="exp-tag">Pillar Pages</span><span class="exp-tag">Link Building</span><span class="exp-tag">Content Ops</span></div>
+      </div>
+      <div class="expertise-card">
+        <span class="exp-icon">🎯</span>
+        <div class="exp-title">ABM &amp; Demand Generation</div>
+        <div class="exp-desc">Designed and automated LinkedIn ABM flows that produced $100K pipeline in 2 months on near-zero cost. From ICP definition to multi-touch outreach and booking workflows.</div>
+        <div class="exp-tags"><span class="exp-tag">LinkedIn ABM</span><span class="exp-tag">Automation</span><span class="exp-tag">List Building</span><span class="exp-tag">Demand Gen</span></div>
+      </div>
+      <div class="expertise-card">
+        <span class="exp-icon">🚀</span>
+        <div class="exp-title">PLG &amp; Sales-Led Marketing</div>
+        <div class="exp-desc">Built self-serve funnels delivering 200+ paid users/month via PLG, and high-touch Enterprise pipelines targeting Fortune 1000 decision-makers in the US market.</div>
+        <div class="exp-tags"><span class="exp-tag">PLG</span><span class="exp-tag">Enterprise</span><span class="exp-tag">Pipeline Gen</span><span class="exp-tag">ICP Targeting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section id="timeline">
+  <div class="wrap fade-in">
+    <span class="section-label">Career Journey</span>
+    <h2>8 years. 4 companies.<br>One consistent outcome.</h2>
+    <p class="section-sub">From agency roots to enterprise SaaS — each role levelled up the complexity, market, and scale.</p>
+
+    <div class="timeline">
+
+      <!-- Social Frontier -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo">
+          <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="sfg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff758c"/>
+                <stop offset="100%" stop-color="#ff7b54"/>
+              </linearGradient>
+            </defs>
+            <rect width="56" height="56" rx="14" fill="url(#sfg)"/>
+            <circle cx="40" cy="13" r="5.5" fill="none" stroke="#fff" stroke-width="2.5"/>
+            <circle cx="16" cy="28" r="5.5" fill="none" stroke="#fff" stroke-width="2.5"/>
+            <circle cx="40" cy="43" r="5.5" fill="none" stroke="#fff" stroke-width="2.5"/>
+            <line x1="21.2" y1="25.5" x2="34.8" y2="15.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <line x1="21.2" y1="30.5" x2="34.8" y2="40.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="tl-body">
+          <div class="tl-period">2016 – 2019</div>
+          <div class="tl-company">Social Frontier</div>
+          <div class="tl-role">Digital Marketing Executive → Senior Executive</div>
+          <div class="tl-desc">Started career at a performance-first agency handling B2B and B2C clients. Managed paid campaigns for real estate, health devices, and vehicle finance — learning to operate across industries and audiences.</div>
+        </div>
+      </div>
+
+      <!-- Clearout -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo">
+          <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cog" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f97316"/>
+                <stop offset="100%" stop-color="#fbbf24"/>
+              </linearGradient>
+            </defs>
+            <rect width="56" height="56" rx="14" fill="url(#cog)"/>
+            <rect x="9" y="16" width="30" height="22" rx="3" fill="none" stroke="#fff" stroke-width="2.5"/>
+            <polyline points="9,16 24,27 39,16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="41" y1="20" x2="50" y2="20" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="43" y1="27" x2="52" y2="27" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="41" y1="34" x2="50" y2="34" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="tl-body">
+          <div class="tl-period">2019 – 2022</div>
+          <div class="tl-company">Clearout.io</div>
+          <div class="tl-role">Core Team — Growth &amp; Marketing</div>
+          <div class="tl-desc">Joined as a core early team member for a B2B SaaS email validation tool. Built the entire marketing function from zero — paid, SEO, content strategy, and partnerships. Owned the full PLG funnel.</div>
+        </div>
+      </div>
+
+      <!-- Monkspaces.ai -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo">
+          <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+            <rect width="56" height="56" rx="14" fill="#f0f0f0"/>
+            <!-- Round bald head -->
+            <circle cx="28" cy="25" r="14" fill="#f4b183"/>
+            <!-- Left lens -->
+            <rect x="16.5" y="22.5" width="8" height="6.5" rx="3" fill="none" stroke="#333" stroke-width="1.8"/>
+            <!-- Right lens -->
+            <rect x="31.5" y="22.5" width="8" height="6.5" rx="3" fill="none" stroke="#333" stroke-width="1.8"/>
+            <!-- Bridge -->
+            <line x1="24.5" y1="25.7" x2="31.5" y2="25.7" stroke="#333" stroke-width="1.6"/>
+            <!-- Smile -->
+            <path d="M 21.5 33 Q 28 39 34.5 33" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+            <!-- Eyes -->
+            <circle cx="20.5" cy="25.7" r="1.3" fill="#333"/>
+            <circle cx="35.5" cy="25.7" r="1.3" fill="#333"/>
+            <!-- Ear lobes -->
+            <ellipse cx="14.2" cy="25" rx="1.7" ry="2.6" fill="#e8956d"/>
+            <ellipse cx="41.8" cy="25" rx="1.7" ry="2.6" fill="#e8956d"/>
+          </svg>
+        </div>
+        <div class="tl-body">
+          <div class="tl-period">2022 – 2023</div>
+          <div class="tl-company">Monkspaces.ai</div>
+          <div class="tl-role">Growth Marketing Lead</div>
+          <div class="tl-desc">Owned all paid channels and LinkedIn ABM for a property management SaaS targeting GCC and EU markets. Delivered $500K pipeline and pioneered an automation-first ABM engine for demand generation.</div>
+        </div>
+      </div>
+
+      <!-- Prezent.ai -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo">
+          <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+            <rect width="56" height="56" rx="14" fill="#0b1e3d"/>
+            <circle cx="28" cy="28" r="19" fill="#133163"/>
+            <text x="28" y="37" font-family="Arial,sans-serif" font-weight="900" font-size="26"
+                  fill="#00b4d8" text-anchor="middle">p</text>
+          </svg>
+        </div>
+        <div class="tl-body">
+          <div class="tl-period">2023 – Present</div>
+          <div class="tl-company">Prezent.ai</div>
+          <div class="tl-role">Performance Marketing Lead</div>
+          <div class="tl-desc">Leading performance marketing for a US Enterprise-focused AI presentation platform. Managing $2.5M+ in LinkedIn spend with ROAS &gt;1, targeting decision-makers at companies with 1,000+ employees.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIFFERENTIATOR ═══ -->
+<section id="differentiator">
+  <div class="wrap">
+    <span class="section-label">The Differentiator</span>
+    <h2>Same marketer.<br>Four completely different worlds.</h2>
+    <p class="diff-intro">Most marketers specialize in one market, one motion, one ICP. I've had to relearn everything — buying behavior, messaging, channels, budgets — four times over. And shipped results each time. That's not versatility for its own sake. It's proof that my strategic thinking travels.</p>
+    <div class="diff-grid fade-in">
+      <div class="diff-card">
+        <span class="diff-num">01</span>
+        <span class="diff-market m1">Indian Consumer Market</span>
+        <div class="diff-company">Social Frontier</div>
+        <div class="diff-detail">High-volume Facebook campaigns for Indian consumers — real estate buyers, patients, vehicle loan seekers. Budget: ₹1Cr/quarter. High emotional buy, long consideration cycles, price-sensitive.</div>
+        <div class="diff-pills"><span class="diff-pill">Facebook</span><span class="diff-pill">Indian B2C</span><span class="diff-pill">High Volume</span><span class="diff-pill">Lead Gen</span></div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-num">02</span>
+        <span class="diff-market m2">Global B2B SaaS — Broad ICP</span>
+        <div class="diff-company">Clearout.io</div>
+        <div class="diff-detail">ICP spanned database agencies, solo marketers, freelancers, and enterprises — anyone with an email list. PLG motion, $50 avg ticket, self-serve conversion. SEO as primary growth lever.</div>
+        <div class="diff-pills"><span class="diff-pill">PLG</span><span class="diff-pill">Global</span><span class="diff-pill">Broad ICP</span><span class="diff-pill">SEO + Paid</span></div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-num">03</span>
+        <span class="diff-market m3">GCC &amp; EU — Niche Regional</span>
+        <div class="diff-company">Monkspaces.ai</div>
+        <div class="diff-detail">Hyper-targeted outreach to property managers and real estate operators in GCC and EU. Small to mid-market companies. High-touch ABM, cultural nuances in messaging, account-level precision over volume.</div>
+        <div class="diff-pills"><span class="diff-pill">GCC + EU</span><span class="diff-pill">ABM</span><span class="diff-pill">Real Estate</span><span class="diff-pill">SMB</span></div>
+      </div>
+      <div class="diff-card">
+        <span class="diff-num">04</span>
+        <span class="diff-market m4">US Enterprise — C-Suite &amp; VPs</span>
+        <div class="diff-company">Prezent.ai</div>
+        <div class="diff-detail">Reaching VP and C-Suite decision-makers at US companies with 1,000+ employees. Long sales cycles, procurement committees, brand trust matters. ROAS &gt;1 at $2.5M spend.</div>
+        <div class="diff-pills"><span class="diff-pill">Enterprise</span><span class="diff-pill">US Market</span><span class="diff-pill">LinkedIn</span><span class="diff-pill">C-Suite</span></div>
+      </div>
+    </div>
+    <div class="diff-quote">
+      <p>"From ₹1Cr Facebook budgets for Indian homebuyers to $2.5M LinkedIn spend targeting US Enterprise C-suites — the markets are opposites. The outcomes speak for themselves."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDIES ═══ -->
+<section id="projects">
+  <div class="wrap fade-in">
+    <span class="section-label">Case Studies</span>
+    <h2>Work that moved the needle.</h2>
+    <p class="section-sub">Real projects, real numbers — organized by motion, not just chronology.</p>
+
+    <!-- PAID AT SCALE -->
+    <div class="project-theme" style="margin-top:56px;">
+      <div class="theme-header">
+        <span class="theme-badge paid">💰 Paid at Scale</span>
+        <div class="theme-title">When budget is the fuel, efficiency is the engine.</div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <span class="project-tag">Mana Projects · Social Frontier</span>
+          <div class="project-title">Scaling Facebook to ₹1Cr/Quarter for Indian Real Estate</div>
+          <div class="case-section"><div class="case-label">Challenge</div><div class="case-text">Drive qualified site visits for 3 different real estate projects across audiences with high consideration and price sensitivity.</div></div>
+          <div class="case-section"><div class="case-label">What I Did</div><div class="case-text">Built and managed Facebook campaigns end-to-end — audience segmentation, creative strategy, budget allocation across projects, and performance optimisation at scale.</div></div>
+          <div class="project-result">
+            <div class="result-num">150+ Site Visits/Month</div>
+            <div class="result-label">Across 3 projects · ₹1Cr quarterly budget</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">Monkspaces.ai · GCC + EU</span>
+          <div class="project-title">10x ROAS Pipeline: $500K from $50K Across Google, Meta &amp; Capterra</div>
+          <div class="case-section"><div class="case-label">Challenge</div><div class="case-text">Build a paid pipeline for a niche property management SaaS targeting a small, hard-to-reach audience in GCC and EU. No brand recognition. Tight ICP.</div></div>
+          <div class="case-section"><div class="case-label">What I Did</div><div class="case-text">Owned entire paid stack — ad copy, landing pages, campaign setup across Google, Meta, and Capterra. Focused on GCC decision-makers with hyper-specific messaging.</div></div>
+          <div class="project-result">
+            <div class="result-num">$500K Pipeline · 10x ROAS</div>
+            <div class="result-label">$41K ARR from GCC · 200+ SQLs · 10 bookings</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">Prezent.ai · US Enterprise</span>
+          <div class="project-title">$2.5M Revenue via LinkedIn at ROAS &gt;1 — Enterprise Targeting</div>
+          <div class="case-section"><div class="case-label">Challenge</div><div class="case-text">Break into US Enterprise accounts (1,000+ employees) and drive revenue-attributed pipeline from LinkedIn — one of the highest-cost B2B paid channels.</div></div>
+          <div class="case-section"><div class="case-label">What I Did</div><div class="case-text">Led all performance marketing. Built high-impact LinkedIn campaigns targeting VP/C-suite decision-makers. Managed $2.5M+ in spend over 2+ years with continuous creative and audience iteration.</div></div>
+          <div class="project-result">
+            <div class="result-num">$2.5M Revenue Influenced</div>
+            <div class="result-label">2+ years · ROAS &gt;1 · $2.5M total LinkedIn spend</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUILDING FROM ZERO -->
+    <div class="project-theme">
+      <div class="theme-header">
+        <span class="theme-badge zero">🌱 Building from Zero</span>
+        <div class="theme-title">No budget, no traffic, no pipeline — until there was.</div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <span class="project-tag">Clearout.io · SEO</span>
+          <div class="project-title">0 → 8,000 Monthly Visitors in 11 Months — No SEO Budget</div>
+          <div class="case-section"><div class="case-label">Challenge</div><div class="case-text">Build organic presence from scratch for a B2B SaaS in a competitive category (email validation) with zero existing traffic and no dedicated SEO budget.</div></div>
+          <div class="case-section"><div class="case-label">What I Did</div><div class="case-text">Developed full content strategy — pillar pages, cluster content, and a partnership backlink programme. Secured co-marketing with HubSpot, Jotform, Ninja Forms, Typeform, and others.</div></div>
+          <div class="project-result">
+            <div class="result-num">8,000 Visitors/Month</div>
+            <div class="result-label">11 months · Zero SEO budget · 10+ platform partnerships</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">Clearout.io · Paid</span>
+          <div class="project-title">Google Ads: Scratch to ROAS-Positive with $7–10K/Month Spend</div>
+          <div class="case-section"><div class="case-label">Challenge</div><div class="case-text">Launch and scale a Google Ads programme for a PLG SaaS with no paid history, low avg ticket ($50), and a broad ICP spanning freelancers to enterprise teams.</div></div>
+          <div class="case-section"><div class="case-label">What I Did</div><div class="case-text">Structured campaigns from keyword research to bid strategy to landing page CRO. Iterated to hit ROAS positivity. Built a self-serve funnel converting traffic to 200+ paid users/month.</div></div>
+          <div class="project-result">
+            <div class="result-num">200+ Paid Users/Month</div>
+            <div class="result-label">$7–10K/month spend · ROAS positive · $50 avg ticket</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABM -->
+    <div class="project-theme">
+      <div class="theme-header">
+        <span class="theme-badge abm">🎯 ABM &amp; Demand Gen</span>
+        <div class="theme-title">Precision over volume. Accounts over audiences.</div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card" style="max-width:480px;">
+          <span class="project-tag">Monkspaces.ai · LinkedIn ABM</span>
+          <div class="project-title">$100K Pipeline in 2 Months — Near-Zero Cost LinkedIn ABM Engine</div>
+          <div class="case-section"><div class="case-label">Challenge</div><div class="case-text">Generate enterprise pipeline for GCC real estate property management SaaS without a dedicated paid budget — using only automation tools and strategic list building.</div></div>
+          <div class="case-section"><div class="case-label">What I Did</div><div class="case-text">Designed and automated an end-to-end LinkedIn outreach and demand gen flow. Built precision account lists, wrote personalised outreach sequences, and automated follow-up workflows.</div></div>
+          <div class="project-result">
+            <div class="result-num">$100K Pipeline · 8 Meetings</div>
+            <div class="result-label">2 months · Near-zero cost · Pure automation + targeting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ BY THE NUMBERS ═══ -->
+<section id="numbers">
+  <div class="wrap">
+    <span class="section-label">By the Numbers</span>
+    <h2>Impact at a glance.</h2>
+    <p class="section-sub">Eight years of B2B growth, distilled into the metrics that matter.</p>
+    <div class="numbers-grid fade-in">
+      <div class="number-cell"><div class="num-big">$2.5M</div><div class="num-label">Revenue influenced via LinkedIn at Prezent.ai</div></div>
+      <div class="number-cell"><div class="num-big">$500K</div><div class="num-label">Pipeline built from $50K spend at Monkspaces.ai</div></div>
+      <div class="number-cell"><div class="num-big">$100K</div><div class="num-label">ABM pipeline in 2 months at near-zero cost</div></div>
+      <div class="number-cell"><div class="num-big">8K+</div><div class="num-label">Monthly organic visitors built from zero in 11 months</div></div>
+      <div class="number-cell"><div class="num-big">200+</div><div class="num-label">Paid users/month generated via PLG funnel</div></div>
+      <div class="number-cell"><div class="num-big">10x</div><div class="num-label">ROAS on $50K spend delivering $500K pipeline</div></div>
+      <div class="number-cell"><div class="num-big">₹1Cr</div><div class="num-label">Facebook budget managed per quarter</div></div>
+      <div class="number-cell"><div class="num-big">4</div><div class="num-label">Markets mastered — India · Global SaaS · GCC/EU · US Enterprise</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="wrap fade-in">
+    <span class="section-label">Let's Talk</span>
+    <h2>Open to conversations.<br>Always.</h2>
+    <div class="contact-box">
+      <h3>Ready to build something great?</h3>
+      <p>Whether it's a full-time role, a consulting engagement, or just swapping notes on B2B growth — I'm always happy to connect.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/anurag-kumar-5ba10797/" target="_blank" class="contact-link">
+          <span class="cl-icon">💼</span>Connect on LinkedIn
+        </a>
+        <a href="mailto:anurag.kumar@prezent.ai" class="contact-link">
+          <span class="cl-icon">✉️</span>anurag.kumar@prezent.ai
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>© 2026 Anurag Kumar · B2B Growth Marketer · Built with intent.</p>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+  // Scroll fade-in
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Counter animation
+  function animateCount(el) {
+    const raw = el.dataset.target;
+    const m = raw.match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+    if (!m) return;
+    const [, pre, numStr, suf] = m;
+    const target = parseFloat(numStr);
+    const isFloat = numStr.includes('.');
+    let start = null;
+    const step = ts => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / 1600, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + (isFloat ? (e * target).toFixed(1) : Math.floor(e * target)) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  const numObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !e.target.dataset.done) {
+        e.target.dataset.done = '1';
+        animateCount(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.num-big').forEach(el => {
+    el.dataset.target = el.textContent.trim();
+    numObs.observe(el);
+  });
+</script>
+
+</body>
+</html>
